@@ -2,7 +2,7 @@
 
 A hub-and-spoke network in Azure, defined as code. Separate `dev` and `prod` environments share one reusable module and are deployed by a GitHub Actions pipeline that signs in with OIDC (no stored secrets).
 
-**Status:** 🚧 In progress. See [docs/progress-log.md](docs/progress-log.md).
+**Status:** ✅ Complete. Deployed and verified on 2026-11-24, then destroyed to avoid cost. See [docs/progress-log.md](docs/progress-log.md).
 
 ## Architecture
 
@@ -27,6 +27,22 @@ A hub-and-spoke network in Azure, defined as code. Separate `dev` and `prod` env
 
 Region: `norwayeast`.
 
+## Result in Azure
+
+Created by the pipeline, not by hand. Each environment gets three virtual networks and two network security groups.
+
+**dev**
+
+![dev resource group](docs/images/dev-resources.png)
+
+**prod**
+
+![prod resource group](docs/images/prod-resources.png)
+
+**Peerings on the dev hub:** both directions are fully synchronized and connected.
+
+![dev hub peerings](docs/images/dev-hub-peerings.png)
+
 ## Design decisions
 
 - **One module, two environments.** `modules/hub-spoke` holds all the logic. `envs/dev` and `envs/prod` only supply values, so the environments cannot drift apart in structure.
@@ -49,7 +65,7 @@ modules/hub-spoke/   reusable network module
 envs/dev/            dev environment
 envs/prod/           prod environment
 .github/workflows/   CI/CD pipeline
-docs/                bootstrap steps and progress log
+docs/                bootstrap steps, progress log and screenshots
 ```
 
 ## Skills shown
