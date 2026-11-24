@@ -68,6 +68,10 @@ envs/prod/           prod environment
 docs/                bootstrap steps, progress log and screenshots
 ```
 
+## How this was built
+
+I built this with an AI assistant (Claude) to speed up writing code and documentation. I chose the design, set the constraints (cost, security, environments), ran the deployment, and checked the result in the Azure portal. The progress log records the problems that came up and how they were fixed.
+
 ## Skills shown
 
 Azure networking, Terraform (modules, `for_each`, remote state), GitHub Actions, OIDC federation, least-privilege role assignments, cost awareness.
